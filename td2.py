@@ -1,90 +1,71 @@
-# # # Ex01 
-# # print("Exercice 1")
 
-# # print("J'apprends Python  17 + 35*2 =" , (17 + 35*2) )
+# Tp2 structures
 
-# # print("Exercice 2")
+# exo1
 
-# # number = int(input("Entrez un nombre: "))
-# # for i in range(1, 11):
-# #     print(f"{number} x {i} = {number * i}")
+# jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+# ventes = [125000, 98000, 143500, 87000, 210000, 176500]
 
-# # print("Exercice 3")
-   
-# # code_pin = 2024
-# # while True:
-# #     pin = int(input("Entrez le code PIN: "))
-# #     if pin == code_pin:
-# #         print("Code PIN correct. Accès autorisé.")
-# #         break
-# #     else:
-# #         print("Code PIN incorrect. Veuillez réessayer.")
+# # Afficher le total et la moyenne journalière des ventes. 
+# total_ventes = sum(ventes)
+# moyenne_ventes = total_ventes / len(ventes)
 
-# # print("Exercice 4")
+# print("Total des ventes de la semaine:", total_ventes)
+# print("Moyenne des ventes de la semaine:", moyenne_ventes)
 
-# # number = int(input("Entrez un nombre: "))
-# # sum_divisors = 0
-# # for i in range(1, number):
-# #     if number % i == 0:
-# #         sum_divisors += i
+# # Afficher le nom du jour où les ventes ont été les plus fortes. 
 
-# # if sum_divisors == number:
-# #     print(f"{number} est un nombre parfait.")
-# # else:
-# #     print(f"{number} n'est pas un nombre parfait.")
-
-# # print("Exercice 5")
+# nom_jour_fort = jours[ventes.index(max(ventes))]
+# print("Le jour de vente fort est:", nom_jour_fort )
 
 
-# # number = int(input("Entrez un nombre  "))  
-# # fac = 1
+# # Afficher les jours dont les ventes dépassent la moyenne. 
 
-# # for i in range(1, number + 1):
-# #     fac *= i
-
-# # print(f"La factorielle de {number} est {fac}.")
-
-# print("Exercice 6")
-
-# num1 = int(input("Entrez le premier nombre: "))
-# num2 = int(input("Entrez le deuxième nombre: "))        
-# num3 = int(input("Entrez le troisième nombre: "))
-
-# if num1 > num2 and num1 > num3:
-#     largest = num1
-# elif num2 > num1 and num2 > num3:
-#     largest = num2
-# else:
-#     largest = num3
-
-# print(f"Le plus grand nombre est {largest}.")
-# s 
-# print("Exercice 7")
-
-# print("Exercice 8")
-# num1 = int(input("Entrez le premier nombre: "))
-# num2 = int(input("Entrez le deuxième nombre: "))
-
-# pgcd = 1
-# for i in range(1, num1 + 1):
-#     if num1 % i == 0 and num2 % i == 0:
-#         pgcd = i
-# print(f"Le PGCD de {num1} et {num2} est {pgcd}.")
+# for i in range(len(ventes)):  
+#     if ventes[i] > moyenne_ventes:
+#         print("Le jour de vente fort est  :", jours[i])
 
 
-# comptes = [
-#     {"nom": "MROT", "Titulaire": "Ahmed Salim", "Agence": "TV2", "Type": "counnant", "Solde": 1500, "historique": []},
-#     {"nom": "MROT", "Titulaire": "Fatou Diop", "Agence": "TV2", "Type": "epargne", "Solde": 2500, "historique": []},
-   
-# ]
+# # Afficher le classement des jours, de la meilleure à la plus faible vente.
 
-# fruits = ['apple', 'banana', 'cherry']
+# for i in range(len(ventes)):
+#     for j in range(i + 1, len(ventes)):
+#         if ventes[i] < ventes[j]:
+#             ventes[i], ventes[j] = ventes[j], ventes[i]
+#             jours[i], jours[j] = jours[j], jours[i]
 
-# x = fruits.index("cherry")
-# print(x)  
+# print("Classement des jours de la meilleure à la plus faible vente:")
+# for i in range(len(ventes)):
+#     print(f"{jours[i]}: {ventes[i]}")       
 
-n = ("kiwi", "orange", "mango")
+# print("4. Afficher le classement des jours, de la meilleure à la plus faible vente (méthode alternative).")
+ 
+# couple =[]
+# for i in range(len(ventes)):
+#     couple.append((ventes[i], jours[i]))
+# couple.sort(reverse=True)
+# for i in range(len(couple)):
+#     print(f"{couple[i][1]}: {couple[i][0]}")
 
-print(n)
+# exxo2 
+
+# l = [4, 7, 1, 9, 7, 3]
+
+from django.conf.locale import pt
 
 
+catalogue = {
+    "P01": {"nom": "Ordinateur portable", "categorie": "Informatique","prix": 45000},
+    "P02": {"nom": "Imprimante", "categorie": "Informatique","prix": 12000},
+    "P03": {"nom": "Chaise de bureau", "categorie": "Mobilier","prix": 6500},
+    "P04": {"nom": "Ramette papier", "categorie": "Fournitures","prix": 350},
+}
+
+catalogue["P05"] = {"nom": "Bureau", "categorie": "Mobilier","prix": 1800}
+
+# Augmenter de 5 % (arrondi à l’unité) le prix des produits de la catégorie Informatique
+
+for i in catalogue:
+    if catalogue[i]["categorie"] == "Informatique":
+        catalogue[i]["prix"] = round(catalogue[i]["prix"] * 1.05)
+    print(f"{catalogue[i]['nom']}: {catalogue[i]['prix']}") 
