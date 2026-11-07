@@ -65,7 +65,8 @@ catalogue["P05"] = {"nom": "Bureau", "categorie": "Mobilier","prix": 1800}
 
 # Augmenter de 5 % (arrondi à l’unité) le prix des produits de la catégorie Informatique
 
-for i in catalogue:
-    if catalogue[i]["categorie"] == "Informatique":
-        catalogue[i]["prix"] = round(catalogue[i]["prix"] * 1.05)
-    print(f"{catalogue[i]['nom']}: {catalogue[i]['prix']}") 
+for i in catalogue.values():
+    if i["categorie"] == "Informatique":
+        i["prix"] = round(i["prix"] * 1.05)
+    print(f"{i['nom']}: {i['prix']}") 
+
